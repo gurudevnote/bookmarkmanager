@@ -32,20 +32,25 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
      */
     private $slug;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
+	
+	/**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     */
+    protected $children;
 
     /**
-	* @ORM\OneToOne(targetEntity="Category", inversedBy="parent")
-	* @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+	* @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+	* @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
 	*/
     private $parent;
 	
@@ -57,6 +62,7 @@ class Category
 	public function __construct()
 	{
 		$this->bookmarks = new ArrayCollection();
+		$this->children = new ArrayCollection();
 	}
 
     /**
@@ -92,6 +98,27 @@ class Category
         return $this->name;
     }
 
+	public function getParent()
+	{
+		return $this->parent;
+	}
+	
+	public function getChildren() {
+        return $this->children;
+    }
+	
+	// always use this to setup a new parent/child relationship
+    public function addChild(Category $child) {
+       $this->children[] = $child;
+       $child->setParent($this);
+    }
+	
+	public function setParent($parent)
+	{
+		$this->parent = $parent;
+		return $this;
+	}
+	
     /**
      * Set slug
      *
