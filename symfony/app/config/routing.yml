@@ -1,0 +1,4 @@
+myspace_bookmark:
+    resource: "@MyspaceBookmarkBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,3 @@
+myspace_bookmark_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MyspaceBookmarkBundle:Default:index }
