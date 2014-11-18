@@ -1,3 +1,6 @@
-myspace_bookmark_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: MyspaceBookmarkBundle:Default:index }
+#myspace_bookmark_homepage:
+#    path:     /hello/{name}
+#    defaults: { _controller: MyspaceBookmarkBundle:Default:index }
+myspace_bookmark_import:
+    path:     /import
+    defaults: { _controller: MyspaceBookmarkBundle:Default:import}	
