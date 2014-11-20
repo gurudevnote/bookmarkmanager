@@ -1,4 +1,5 @@
-<a href="{{path('myspace_bookmark_homepage')}}">Back to categorys</a><br/>
+<p>Category: {{bookmarks[0].category.name}}</p>
+<p><a href="{{path('myspace_bookmark_homepage')}}">Back to categorys</a></p>
 <ul>
 {% for item in bookmarks %}
 	<li><a href="{{path('myspace_bookmark_bookmark',{'bookmarkid':item.id})}}">{{ item.title }}</a></li>
