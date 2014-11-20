@@ -107,6 +107,11 @@ class Category
         return $this->children;
     }
 	
+	public function getBookmarks()
+	{
+		return $this->bookmarks;
+	}
+	
 	// always use this to setup a new parent/child relationship
     public function addChild(Category $child) {
        $this->children[] = $child;

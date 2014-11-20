@@ -3,4 +3,10 @@ myspace_bookmark_homepage:
     defaults: { _controller: MyspaceBookmarkBundle:Default:index }
 myspace_bookmark_import:
     path:     /import
-    defaults: { _controller: MyspaceBookmarkBundle:Default:import}	
+    defaults: { _controller: MyspaceBookmarkBundle:Default:import}
+myspace_bookmark_category:
+    path:     /category/{catid}
+    defaults: { _controller: MyspaceBookmarkBundle:Default:category}
+myspace_bookmark_bookmark:
+    path:     /bookmark/{bookmarkid}
+    defaults: { _controller: MyspaceBookmarkBundle:Default:bookmark}	

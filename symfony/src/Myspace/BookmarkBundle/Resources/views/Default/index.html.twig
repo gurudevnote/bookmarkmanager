@@ -1,1 +1,5 @@
-Hello {{ name }}!
+<ul>
+{% for item in category %}
+	<li><a href="category/{{ item.id }}">{{ item.name }}({{ item.bookmarks | length }})</a></li>
+{% endfor %}
+</ul>

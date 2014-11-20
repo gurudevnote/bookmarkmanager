@@ -33,7 +33,7 @@ class Bookmark
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=300)
+     * @ORM\Column(name="title", type="string", length=300,nullable=true)
      */
     private $title;
 
@@ -77,7 +77,7 @@ class Bookmark
 
 	/**
 	* @ORM\ManyToOne(targetEntity="Category", inversedBy="bookmarks")
-	* @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+	* @ORM\JoinColumn(name="catid", referencedColumnName="id")
 	*/
 	protected $category;
 
@@ -90,7 +90,14 @@ class Bookmark
 	{
 		$this->comments = new ArrayCollection();
 		$this->tags = new ArrayCollection();
-	}	
+	}
+	
+	
+	public function getTags()
+	{
+		return $this->tags;
+	}
+	
 	
     /**
      * Get id

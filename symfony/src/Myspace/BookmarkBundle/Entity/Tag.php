@@ -33,7 +33,7 @@ class Tag
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(name="created", type="datetime",nullable=true)
      */
     private $created;
 

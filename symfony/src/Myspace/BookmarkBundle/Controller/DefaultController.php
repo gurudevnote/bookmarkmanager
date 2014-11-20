@@ -15,14 +15,31 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function bookmarkAction($bookmarkid)
+	{
+		$bookmark = $this->getDoctrine()
+				->getRepository('MyspaceBookmarkBundle:Bookmark')
+				->findOneById($bookmarkid);
+		//var_dump($bookmark[0]->getTags());exit;
+		return $this->render('MyspaceBookmarkBundle:Default:bookmark.html.twig', array('bookmark' => $bookmark));
+	}
+	
+	public function categoryAction($catid)
+	{
+		$bookmarks = $this->getDoctrine()
+				->getRepository('MyspaceBookmarkBundle:Bookmark')
+				->findByCategory($catid);
+		return $this->render('MyspaceBookmarkBundle:Default:bookmarksbbycategory.html.twig', array('bookmarks' => $bookmarks));
+	}
+	
+	public function indexAction()
     {
         //test entity
 		
-		$catparent = $this->getDoctrine()
+		$cats = $this->getDoctrine()
 				->getRepository('MyspaceBookmarkBundle:Category')
-				->find(1);
-		
+				->findAll();		
+		/*
 		//var_dump($catparent->getChildren());exit;
 		if($catparent!=null)
 		{
@@ -32,7 +49,7 @@ class DefaultController extends Controller
 			}
 		}
 		exit;
-		/*
+		
 		$category = new Category();
 		$category->setName("course");
 		$category->setParent($catparent);
@@ -46,8 +63,10 @@ class DefaultController extends Controller
 				->find(2);
 		//var_dump($catparent1);exit;
 		
-		//return $this->render('MyspaceBookmarkBundle:Default:index.html.twig', array('name' => $name));
+		//
 		*/
+		
+		return $this->render('MyspaceBookmarkBundle:Default:index.html.twig', array('category' => $cats));
     }
 	
 	public function importAction(Request $request)
@@ -146,7 +165,11 @@ class DefaultController extends Controller
 					//var_dump($icons);
 					$bookmark = new Bookmark();
 					$bookmark->setUrl($hrefs[1]);
-					$bookmark->setTitle($texts[1]);
+					if(count($texts) > 0)
+					{
+						$bookmark->setTitle($texts[1]);
+					}
+					
 					if(count($icons) > 0)
 					{
 						$bookmark->setIcon($icons[1]);

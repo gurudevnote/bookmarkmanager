@@ -1,0 +1,12 @@
+<p><a href="{{path('myspace_bookmark_category',{'catid':bookmark.category.id})}}">Back to category ({{bookmark.category.name}})</a></p>
+<ul>
+	<li><a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a></li>
+</ul>
+<p>Tags:</p>
+<p>
+<ul>
+{% for item in bookmark.tags %}
+	<li>{{ item.name }}({{ item.bookmarks | length }})</li>
+{% endfor %}
+</ul>
+</p>
