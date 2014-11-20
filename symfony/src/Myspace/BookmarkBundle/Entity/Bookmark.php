@@ -40,28 +40,28 @@ class Bookmark
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=300)
+     * @ORM\Column(name="slug", type="string", length=300,nullable=true)
      */
     private $slug;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=500)
+     * @ORM\Column(name="description", type="string", length=500,nullable=true)
      */
     private $description;
 	
 	/**
      * @var string
      *
-     * @ORM\Column(name="icon", type="string", length=500)
+     * @ORM\Column(name="icon", type="string", length=500,nullable=true)
      */
     private $icon;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(name="created", type="datetime",nullable=true)
      */
     private $created;
 	
@@ -123,6 +123,29 @@ class Bookmark
     public function getUrl()
     {
         return $this->url;
+    }
+	
+	/**
+     * Set category
+     *
+     * @param string $category
+     * @return Bookmark
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**

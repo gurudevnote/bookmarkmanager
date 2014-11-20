@@ -11,6 +11,7 @@ use Myspace\BookmarkBundle\Entity\Comment;
 use Myspace\BookmarkBundle\Entity\Contact;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\DomCrawler\Crawler;
 
 class DefaultController extends Controller
 {
@@ -94,6 +95,70 @@ class DefaultController extends Controller
 			//var_dump($uploadFile);exit;
 			//echo $filePath;
 			$fileContent = file_get_contents($filePath);
+			//echo $fileContent;
+			$array = explode("\n", $fileContent);
+			$newarr = array();
+			foreach($array as $line)
+			{
+				if(strpos($line,"<H3 ADD_DATE")!==false || strpos($line,"<DT><A HREF=") !==false)
+				{
+					$newarr[] = $line;
+				}
+			}
+			
+			$currentCategory = null;
+			$parentcatID = 0;
+			$currentcatID = 0;
+			$level = 0;
+			$text = "/>([^<]+)</";
+			$addDate = "/ADD_DATE=\"(\\d+)\"/";
+			$lastModify = "/LAST_MODIFIED=\"(\\d+)\"/";
+			$herf = "/HREF=\"([^\"]+)\"/"; ;
+			$icon = "/ICON=\"([^\"]+)\"/"; 
+			foreach($newarr as $line)
+			{
+				if(strpos($line,"<H3 ADD_DATE") !==false)
+				{
+					//folder					
+					
+					preg_match($text, $line, $texts);
+					preg_match($addDate, $line, $addDates);
+					preg_match($lastModify, $line, $lastModifies);
+					//echo $texts[1]."  {$addDate[1]}  {$lastModifies[1]} <br/>";
+					
+					$category = new Category();
+					$category->setName($texts[1]);
+					$em = $this->getDoctrine()->getManager();
+					$em->persist($category);
+					$em->flush();
+					$currentcatID = $category->getId();
+					$currentCategory = $category;
+				}
+				else if(strpos($line,"<DT><A HREF=") !==false)
+				{
+					//continue;
+					preg_match($text, $line, $texts);
+					preg_match($herf, $line, $hrefs);
+					preg_match($icon, $line, $icons);
+					preg_match($addDate, $line, $addDates);
+					
+					//echo $texts[1]." {$hrefs[1]} {$icons[1]} {$addDates[1]}<br/>";
+					//var_dump($icons);
+					$bookmark = new Bookmark();
+					$bookmark->setUrl($hrefs[1]);
+					$bookmark->setTitle($texts[1]);
+					if(count($icons) > 0)
+					{
+						$bookmark->setIcon($icons[1]);
+					}
+					$bookmark->setCategory($currentCategory);
+					$em = $this->getDoctrine()->getManager();
+					$em->persist($bookmark);
+					$em->flush();
+				}
+			}
+
+			//exit;
 			//echo $fileContent;exit;
 			
 			return $this->redirect($this->generateUrl('myspace_bookmark_homepage'));
