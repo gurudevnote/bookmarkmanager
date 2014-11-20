@@ -74,6 +74,16 @@ class Bookmark
 	 * )
      */
     private $tags;
+	
+	/**	
+     * @ORM\OneToMany(targetEntity="BookmarkTag" , mappedBy="bookmark" , cascade={"all"} , orphanRemoval=true)
+     * */
+    protected $bookmarktags;
+	
+	public function getBookmarktags()
+	{
+		return $this->bookmarktags;
+	}
 
 	/**
 	* @ORM\ManyToOne(targetEntity="Category", inversedBy="bookmarks")

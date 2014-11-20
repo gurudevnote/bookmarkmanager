@@ -1,0 +1,16 @@
+Tag: <span>{{tag.name}}</span>
+<ul>
+	{% for item in tag.bookmarktags %}
+	<li>
+		<a href="{{item.bookmark.url}}" target="_blank">{{item.bookmark.title}}</a>, Back to category <a href="{{path('myspace_bookmark_category',{'catid':item.bookmark.category.id})}}">({{item.bookmark.category.name}})</a> 
+		{% if item.bookmark.bookmarktags %}
+		<p>
+			<span>Other tags:</span>
+			{% for item1 in item.bookmark.bookmarktags %}
+				<a href="{{path('myspace_bookmark_tag',{'tagid':item1.tag.id})}}">{{ item1.tag.name }}</a>({{ item1.tag.bookmarktags | length }})
+			{% endfor %}
+		</p>
+		{% endif %}
+	</li>
+	{% endfor %}
+</ul>

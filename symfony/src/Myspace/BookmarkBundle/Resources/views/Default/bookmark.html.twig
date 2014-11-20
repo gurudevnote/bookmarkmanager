@@ -5,8 +5,8 @@
 <p>Tags:</p>
 <p>
 <ul>
-{% for item in bookmark.tags %}
-	<li>{{ item.name }}({{ item.bookmarks | length }})</li>
+{% for item in bookmark.bookmarktags %}
+	<li><a href="{{path('myspace_bookmark_tag',{'tagid':item.tag.id})}}">{{ item.tag.name }}</a>({{ item.tag.bookmarktags | length }})</li>
 {% endfor %}
 </ul>
 </p>

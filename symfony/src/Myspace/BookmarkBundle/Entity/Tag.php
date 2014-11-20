@@ -48,10 +48,20 @@ class Tag
 	*/
 	private $bookmarks;
 	
+	/**	
+     * @ORM\OneToMany(targetEntity="BookmarkTag" , mappedBy="tag" , cascade={"all"} , orphanRemoval=true)
+     */
+    protected $bookmarktags;
+	
 	public function __construct()
 	{
 		$this->bookmarks = new ArrayCollection();
-	}	
+	}
+	
+	public function getBookmarktags()
+	{
+		return $this->bookmarktags;
+	}
 
     /**
      * Get id

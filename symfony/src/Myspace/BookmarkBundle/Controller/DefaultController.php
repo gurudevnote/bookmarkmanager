@@ -15,7 +15,16 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class DefaultController extends Controller
 {
-    public function bookmarkAction($bookmarkid)
+    public function tagAction($tagid)
+	{
+		$tag = $this->getDoctrine()
+				->getRepository('MyspaceBookmarkBundle:Tag')
+				->findOneById($tagid);
+		//var_dump($tag);exit;
+		return $this->render('MyspaceBookmarkBundle:Default:tag.html.twig', array('tag' => $tag));
+	}
+	
+	public function bookmarkAction($bookmarkid)
 	{
 		$bookmark = $this->getDoctrine()
 				->getRepository('MyspaceBookmarkBundle:Bookmark')
@@ -38,7 +47,11 @@ class DefaultController extends Controller
 		
 		$cats = $this->getDoctrine()
 				->getRepository('MyspaceBookmarkBundle:Category')
-				->findAll();		
+				->findAll();
+		$tags = $this->getDoctrine()
+				->getRepository('MyspaceBookmarkBundle:Tag')
+				->findAll();
+		$array = array($cats, $tags);
 		/*
 		//var_dump($catparent->getChildren());exit;
 		if($catparent!=null)
@@ -66,7 +79,7 @@ class DefaultController extends Controller
 		//
 		*/
 		
-		return $this->render('MyspaceBookmarkBundle:Default:index.html.twig', array('category' => $cats));
+		return $this->render('MyspaceBookmarkBundle:Default:index.html.twig', array('array' => $array));
     }
 	
 	public function importAction(Request $request)

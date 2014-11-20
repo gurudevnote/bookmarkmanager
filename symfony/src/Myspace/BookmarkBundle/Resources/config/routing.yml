@@ -9,4 +9,7 @@ myspace_bookmark_category:
     defaults: { _controller: MyspaceBookmarkBundle:Default:category}
 myspace_bookmark_bookmark:
     path:     /bookmark/{bookmarkid}
-    defaults: { _controller: MyspaceBookmarkBundle:Default:bookmark}	
+    defaults: { _controller: MyspaceBookmarkBundle:Default:bookmark}
+myspace_bookmark_tag:
+    path:     /tag/{tagid}
+    defaults: { _controller: MyspaceBookmarkBundle:Default:tag}
