@@ -13,3 +13,8 @@ myspace_bookmark_bookmark:
 myspace_bookmark_tag:
     path:     /tag/{tagid}
     defaults: { _controller: MyspaceBookmarkBundle:Default:tag}
+myspace_bookmark_api_categories_all:
+    path:     /api/categories
+    defaults: { _controller: MyspaceBookmarkBundle:Category:all, _format: ~}
+    requirements:
+        _method: GET		
