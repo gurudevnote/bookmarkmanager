@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp">
+<head>
+  <meta charset="utf-8">
+  <title>My HTML File</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+  <script lang="javascript">
+	var gldata = null;
+	var phonecatApp = angular.module('phonecatApp', []);
+	phonecatApp.controller('PhoneListCtrl', function ($scope,$http) {
+		$http.get('http://localhost:81/myproject/bookmarkmanager/symfony/web/app_dev.php/api/categories').success(function(data) {
+			$scope.datas = data;
+			gldata = data;
+			//alert($scope.datas);
+		});
+	});
+  </script>
+</head>
+<body>
+	<div ng-controller="PhoneListCtrl">
+		<ul>
+			<li ng-repeat="dt in datas">				
+				{{"{{dt.name}}"}}
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -10,12 +10,23 @@ use Myspace\BookmarkBundle\Entity\Tag;
 use Myspace\BookmarkBundle\Entity\Comment;
 use Myspace\BookmarkBundle\Entity\Contact;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\DomCrawler\Crawler;
 
 class DefaultController extends Controller
 {
-    public function tagAction($tagid)
+    public function angularjsAction()	
+	{
+		return $this->render('MyspaceBookmarkBundle:Default:angular.html.twig', array());
+	}
+	
+	public function iconAction()	
+	{
+		return $this->render('MyspaceBookmarkBundle:Default:icon.html.twig', array());
+	}
+	
+	public function tagAction($tagid)
 	{
 		$tag = $this->getDoctrine()
 				->getRepository('MyspaceBookmarkBundle:Tag')
@@ -78,6 +89,15 @@ class DefaultController extends Controller
 		
 		//
 		*/
+		
+		//return $this->render('MyspaceBookmarkBundle:Default:index.html.twig', array('array' => $array));
+		//$json = $this->encodeUserDataToJson($cats);
+		//$array = json_encode($array);
+		//return $this->render('MyspaceBookmarkBundle:Default:index.json.twig', array('array' => $json));
+		
+		//$serializer = $this->container->get('serializer');
+		//$reports = $serializer->serialize($array, 'json');
+		//return new Response($reports); // should be $reports as $doctrineobject is not serialized
 		
 		return $this->render('MyspaceBookmarkBundle:Default:index.html.twig', array('array' => $array));
     }
