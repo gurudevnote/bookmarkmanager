@@ -1,0 +1,18 @@
+<div class="panel" ng-controller="CategoryListCtrl">
+	<h3 class="panel-heading">Category list</h3>
+	<form class="navbar-form navbar-left">
+		<input type="text" class="form-control" placeholder="Search..." ng-model="query">
+	</form>
+	<table class="table table-striped table-bordered table-hover">
+		<tr>
+			<th><span class="glyphicon glyphicon-sort-by-alphabet">ID</span></th>
+			<th><span class="glyphicon glyphicon-sort-by-alphabet-alt">Name</span></th>
+			<th>total bookmarks</th>
+		</tr>
+		<tr  ng-repeat="dt in datas | filter:query | orderBy:orderProp">
+			<td>{{dt.id}}</td>
+			<td><a href="#/categories/{{dt.id}}">{{dt.name}}</a></td>
+			<td>{{dt.totalbm}}</td>
+		</tr>
+	</table>
+</div>
