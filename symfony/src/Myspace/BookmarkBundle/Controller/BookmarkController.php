@@ -15,7 +15,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use JMS\Serializer\SerializationContext;
 
-class CategoryController extends FOSRestController
+class BookmarkController extends FOSRestController
 {
     /**
      * @View(serializerGroups={"list"})
@@ -25,14 +25,9 @@ class CategoryController extends FOSRestController
         
 		$context = SerializationContext::create()->setGroups(array('list'));
 		$cats = $this->getDoctrine()
-			->getRepository('MyspaceBookmarkBundle:Category')
+			->getRepository('MyspaceBookmarkBundle:Bookmark')
 			->findAll();
 			//->findById(22);
-		foreach($cats as &$cat)
-		{
-			$cat->setTotalbm(count($cat->getBookmarks()));
-		}
-		
         $view = $this->view($cats, 200)
 			->setFormat("json")
         ;
@@ -44,7 +39,7 @@ class CategoryController extends FOSRestController
     public function getbyidAction($id)
     {        		
 		$cat = $this->getDoctrine()
-			->getRepository('MyspaceBookmarkBundle:Category')
+			->getRepository('MyspaceBookmarkBundle:Bookmark')
 			->findOneById($id);
         $view = $this->view($cat, 200)
 			->setFormat("json")
