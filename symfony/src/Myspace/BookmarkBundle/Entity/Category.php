@@ -4,6 +4,7 @@ namespace Myspace\BookmarkBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * Category
@@ -19,6 +20,7 @@ class Category
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+	 * @Groups({"list", "details"})
      */
     private $id;
 
@@ -26,6 +28,7 @@ class Category
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+	 * @Groups({"list", "details"})
      */
     private $name;
 
@@ -33,6 +36,7 @@ class Category
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255, nullable=true)
+	 * @Groups({"list", "details"})
      */
     private $slug;
 
@@ -40,24 +44,33 @@ class Category
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=true)
+	 * @Groups({"list", "details"})
      */
     private $created;
 	
 	/**
      * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+	 * @Groups({"details"})
      */
     protected $children;
 
     /**
 	* @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
 	* @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
+	* @Groups({"details"})
 	*/
     private $parent;
 	
 	/**
 	* @ORM\OneToMany(targetEntity="Bookmark", mappedBy="category")
+	* @Groups({"details"})
 	*/
 	private $bookmarks;
+	
+	/**
+	* @Groups({"list"})
+	*/
+	private $totalbm;
 	
 	public function __construct()
 	{
@@ -169,4 +182,15 @@ class Category
     {
         return $this->created;
     }
+	
+	public function getTotalbm()
+	{
+		return $this->totalbm;
+	}
+	
+	public function setTotalbm($total)
+	{
+		$this->totalbm = $total;
+		return $this;
+	}
 }

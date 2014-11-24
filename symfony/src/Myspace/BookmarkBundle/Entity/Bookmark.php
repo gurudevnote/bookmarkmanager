@@ -4,7 +4,7 @@ namespace Myspace\BookmarkBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * Bookmark
@@ -20,6 +20,7 @@ class Bookmark
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+	 * @Groups({"list"})
      */
     private $id;
 
@@ -27,6 +28,7 @@ class Bookmark
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=300)
+	 * @Groups({"list"})
      */
     private $url;
 
@@ -34,6 +36,7 @@ class Bookmark
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=300,nullable=true)
+	 * @Groups({"list"})
      */
     private $title;
 
@@ -41,6 +44,7 @@ class Bookmark
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=300,nullable=true)
+	 * @Groups({"list"})
      */
     private $slug;
 
@@ -48,12 +52,13 @@ class Bookmark
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=500,nullable=true)
+	 * @Groups({"list"})
      */
     private $description;
 	
 	/**
      * @var string
-     *
+     * @Groups({"list"})
      * @ORM\Column(name="icon", type="string", length=500,nullable=true)
      */
     private $icon;
@@ -62,11 +67,12 @@ class Bookmark
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime",nullable=true)
+	 * @Groups({"list"})
      */
     private $created;
 	
     /**
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="bookmarks")
+	 * @ORM\ManyToMany(targetEntity="Tag", inversedBy="bookmarks")
      * @ORM\JoinTable(
 	 *		name="bookmark_tag",
 	 *		joinColumns={@ORM\JoinColumn(name="bookmark_id",referencedColumnName="id")},
