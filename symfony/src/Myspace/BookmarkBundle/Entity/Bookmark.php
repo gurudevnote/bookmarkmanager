@@ -59,7 +59,7 @@ class Bookmark
 	/**
      * @var string
      * @Groups({"list"})
-     * @ORM\Column(name="icon", type="string", length=500,nullable=true)
+     * @ORM\Column(name="icon", type="string", length=10000,nullable=true)
      */
     private $icon;
 
