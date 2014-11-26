@@ -176,7 +176,7 @@ class DefaultController extends Controller
 					preg_match($text, $line, $texts);
 					preg_match($addDate, $line, $addDates);
 					preg_match($lastModify, $line, $lastModifies);
-					//echo $texts[1]."  {$addDate[1]}  {$lastModifies[1]} <br/>";
+					echo $texts[1]."<br/>";//."  {$addDate[1]}  {$lastModifies[1]} <br/>";
 					
 					$category = new Category();
 					$category->setName($texts[1]);
@@ -196,6 +196,7 @@ class DefaultController extends Controller
 					
 					//echo $texts[1]." {$hrefs[1]} {$icons[1]} {$addDates[1]}<br/>";
 					//var_dump($icons);
+					echo $hrefs[1]."<br/>";
 					$bookmark = new Bookmark();
 					$bookmark->setUrl($hrefs[1]);
 					if(count($texts) > 0)
