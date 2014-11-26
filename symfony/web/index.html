@@ -14,7 +14,7 @@
 	var bookmarkAppRouter = angular.module('bookmarkAppRouter', ['ngRoute','bookmarkApp']);
 	var bookmarkApp = angular.module('bookmarkApp', []);
 	bookmarkApp.controller('CategoryListCtrl', function ($scope,$http) {
-		$http.get('http://localhost:81/myproject/bookmarkmanager/symfony/web/app_dev.php/api/categories').success(function(data) {
+		$http.get('api/v1/categories.json').success(function(data) {
 			$scope.datas = data;
 			$scope.orderProp = 'id';
 			//gldata = data;
@@ -26,18 +26,18 @@
 		//console.log($routeParams);
 		/**/
 		//$scope.categoryId = $routeParams.categoryId;
-		$http.get('http://localhost:81/myproject/bookmarkmanager/symfony/web/app_dev.php/api/categories/'+ $routeParams.categoryId).success(function(data) {
+		$http.get('api/v1/categories/'+ $routeParams.categoryId + ".json").success(function(data) {
 			$scope.datas = data;
 			$scope.orderProp = 'id';
 			//gldata = data;
 			//alert($scope.datas);
-			console.log(data);
+			//console.log(data);
 		});
 		/**/
 	}]);
 	
 	bookmarkApp.controller('BookmarkListCtrl', function ($scope,$http) {
-		$http.get('http://localhost:81/myproject/bookmarkmanager/symfony/web/app_dev.php/api/bookmarks').success(function(data) {
+		$http.get('api/v1/bookmarks.json').success(function(data) {
 			$scope.datas = data;
 			$scope.orderProp = 'id';
 			//gldata = data;
@@ -49,12 +49,12 @@
 		//console.log($routeParams);
 		/**/
 		//$scope.categoryId = $routeParams.categoryId;
-		$http.get('http://localhost:81/myproject/bookmarkmanager/symfony/web/app_dev.php/api/bookmarks/'+ $routeParams.bookmarkId).success(function(data) {
+		$http.get('api/v1/bookmarks/'+ $routeParams.bookmarkId + ".json").success(function(data) {
 			$scope.datas = data;
 			$scope.orderProp = 'id';
 			//gldata = data;
 			//alert($scope.datas);
-			console.log(data);
+			//console.log(data);
 		});
 		/**/
 	}]);	

@@ -1,11 +1,10 @@
-<p><a href="{{path('myspace_bookmark_api_categories_all')}}">Web api</a></p>
 <table border ="0" style="vertical-align:top">
 	<tr>
 		<td>
 			<span>Categories</span>
 			<ul>
 			{% for item in attribute(array, 0) %}
-				<li><a href="category/{{ item.id }}">{{ item.name }}({{ item.bookmarks | length }})</a></li>
+				<li><a href="{{path('myspace_bookmark_category',{'catid':item.id})}}">{{ item.name }}({{ item.bookmarks | length }})</a></li>
 			{% endfor %}
 			</ul>
 		</td>
@@ -13,7 +12,7 @@
 			<span>Tags</span>
 			<ul>
 			{% for item in attribute(array, 1) %}
-				<li><a href="tag/{{ item.id }}">{{ item.name }}({{ item.bookmarktags | length }})</a></li>
+				<li><a href="{{path('myspace_bookmark_tag',{'tagid':item.id})}}">{{ item.name }}({{ item.bookmarktags | length }})</a></li>
 			{% endfor %}
 			</ul>
 		</td>

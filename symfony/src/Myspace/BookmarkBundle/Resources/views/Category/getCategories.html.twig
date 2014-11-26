@@ -1,0 +1,5 @@
+<ul>
+{% for item in data %}
+	<li><a href="{{path('myspace_bookmark_category',{'catid':item.id})}}">{{item.name}}</a>({{item.totalbm}})</li>
+{% endfor %}
+</ul>

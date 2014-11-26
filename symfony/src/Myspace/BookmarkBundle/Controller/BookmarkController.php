@@ -20,7 +20,7 @@ class BookmarkController extends FOSRestController
     /**
      * @View(serializerGroups={"list"})
      */
-    public function allAction()
+    public function getBookmarksAction()
     {
         
 		$context = SerializationContext::create()->setGroups(array('list'));
@@ -29,20 +29,20 @@ class BookmarkController extends FOSRestController
 			->findAll();
 			//->findById(22);
         $view = $this->view($cats, 200)
-			->setFormat("json")
+			//->setFormat("json")
         ;
 		$view->setSerializationContext($context);
         //return $this->handleView($view);
 		return $view;
     }
 			
-    public function getbyidAction($id)
+    public function getBookmarkAction($id)
     {        		
 		$cat = $this->getDoctrine()
 			->getRepository('MyspaceBookmarkBundle:Bookmark')
 			->findOneById($id);
         $view = $this->view($cat, 200)
-			->setFormat("json")
+			//->setFormat("json")
         ;
 		return $view;
     }	

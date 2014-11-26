@@ -10,25 +10,11 @@ myspace_bookmark_import:
 myspace_bookmark_category:
     path:     /category/{catid}
     defaults: { _controller: MyspaceBookmarkBundle:Default:category}
+    requirements:
+        _method: GET
 myspace_bookmark_bookmark:
     path:     /bookmark/{bookmarkid}
     defaults: { _controller: MyspaceBookmarkBundle:Default:bookmark}
 myspace_bookmark_tag:
     path:     /tag/{tagid}
     defaults: { _controller: MyspaceBookmarkBundle:Default:tag}
-myspace_bookmark_api_categories_all:
-    path:     /api/categories
-    defaults: { _controller: MyspaceBookmarkBundle:Category:all, _format: ~}
-    requirements:
-        _method: GET
-myspace_bookmark_api_categories_getbyid:
-    path:     /api/categories/{id}
-    defaults: { _controller: MyspaceBookmarkBundle:Category:getbyid, _format: ~}
-myspace_bookmark_api_bookmarks_all:
-    path:     /api/bookmarks
-    defaults: { _controller: MyspaceBookmarkBundle:Bookmark:all, _format: ~}
-    requirements:
-        _method: GET
-myspace_bookmark_api_bookmarks_getbyid:
-    path:     /api/bookmarks/{id}
-    defaults: { _controller: MyspaceBookmarkBundle:Bookmark:getbyid, _format: ~}	

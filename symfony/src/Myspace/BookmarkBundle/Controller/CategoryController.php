@@ -20,7 +20,7 @@ class CategoryController extends FOSRestController
     /**
      * @View(serializerGroups={"list"})
      */
-    public function allAction()
+    public function getCategoriesAction()
     {
         
 		$context = SerializationContext::create()->setGroups(array('list'));
@@ -34,20 +34,20 @@ class CategoryController extends FOSRestController
 		}
 		
         $view = $this->view($cats, 200)
-			->setFormat("json")
+			//->setFormat("json")
         ;
 		$view->setSerializationContext($context);
         //return $this->handleView($view);
 		return $view;
     }
 			
-    public function getbyidAction($id)
+    public function getCategoryAction($id)
     {        		
 		$cat = $this->getDoctrine()
 			->getRepository('MyspaceBookmarkBundle:Category')
 			->findOneById($id);
         $view = $this->view($cat, 200)
-			->setFormat("json")
+			//->setFormat("json")
         ;
 		return $view;
     }	

@@ -1,0 +1,5 @@
+<ul>
+{% for item in data %}
+	<li><img src="{{item.icon}}"> <a href="{{path('myspace_bookmark_bookmark',{'bookmarkid':item.id})}}"> {{item.title}}</a> Category <a href="{{path('myspace_bookmark_category',{'catid':item.id})}}">{{item.category.name}}</a></li>
+{% endfor %}
+</ul>
