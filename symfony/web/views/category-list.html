@@ -1,4 +1,4 @@
-<div class="panel" ng-controller="CategoryListCtrl">
+<div class="panel">
 	<h3 class="panel-heading">Category list</h3>
 	<form class="navbar-form navbar-left">
 		<input type="text" class="form-control" placeholder="Search..." ng-model="query">
@@ -7,7 +7,7 @@
 		<tr>
 			<th ng-click="orderProp='id';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='id', 'glyphicon-sort-by-attributes':orderProp=='id' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='id'&&orderReverse}" class="">&nbsp;</span>ID</th>
 			<th ng-click="orderProp='name';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='name', 'glyphicon-sort-by-attributes':orderProp=='name' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='name'&&orderReverse}" >&nbsp;</span>Name</th>
-			<th ng-click="orderProp='totalbm';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='totalbm', 'glyphicon-sort-by-attributes':orderProp=='totalbm' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='totalbm'&&orderReverse}" >&nbsp;</span>total bookmarks</th>
+			<th ng-click="orderProp='totalbm';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='totalbm', 'glyphicon-sort-by-attributes':orderProp=='totalbm' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='totalbm'&&orderReverse}" >&nbsp;</span>Total bookmarks</th>
 		</tr>
 		<tr  ng-repeat="dt in datas | filter:query | orderBy:orderProp:orderReverse">
 			<td>{{dt.id}}</td>
