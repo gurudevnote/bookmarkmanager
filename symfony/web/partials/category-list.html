@@ -5,11 +5,11 @@
 	</form>
 	<table class="table table-striped table-bordered table-hover">
 		<tr>
-			<th ng-click="orderProp='id'"><span class="glyphicon glyphicon-sort-by-alphabet">ID</span></th>
-			<th ng-click="orderProp='name'"><span class="glyphicon glyphicon-sort-by-alphabet-alt" >Name</span></th>
-			<th ng-click="orderProp='totalbm'" >total bookmarks</th>
+			<th ng-click="orderProp='id';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='id', 'glyphicon-sort-by-attributes':orderProp=='id' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='id'&&orderReverse}" class="">&nbsp;</span>ID</th>
+			<th ng-click="orderProp='name';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='name', 'glyphicon-sort-by-attributes':orderProp=='name' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='name'&&orderReverse}" >&nbsp;</span>Name</th>
+			<th ng-click="orderProp='totalbm';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='totalbm', 'glyphicon-sort-by-attributes':orderProp=='totalbm' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='totalbm'&&orderReverse}" >&nbsp;</span>total bookmarks</th>
 		</tr>
-		<tr  ng-repeat="dt in datas | filter:query | orderBy:orderProp">
+		<tr  ng-repeat="dt in datas | filter:query | orderBy:orderProp:orderReverse">
 			<td>{{dt.id}}</td>
 			<td><a href="#/categories/{{dt.id}}">{{dt.name}}</a></td>
 			<td>{{dt.totalbm}}</td>
