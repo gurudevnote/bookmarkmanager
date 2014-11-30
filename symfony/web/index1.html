@@ -1,89 +1,13 @@
 <!doctype html>
-<html lang="en" ng-app="bookmarkAppRouter">
+<html lang="en" ng-app="bookmarkApp">
 <head>
   <meta charset="utf-8">
   <title>Category</title>
-  <link rel="stylesheet" href="bundles/myspacebookmark/css/bootstrap.min.css">
-  <script src="bundles/myspacebookmark/js/angular.min.js"></script>
-  <script src="bundles/myspacebookmark/js/angular-route.js"></script>
-  <script lang="javascript">
-	var myServices =  angular.module('myservices', []);
-  
-  
-	var gldata = null;
-	var bookmarkAppRouter = angular.module('bookmarkAppRouter', ['ngRoute','bookmarkApp']);
-	var bookmarkApp = angular.module('bookmarkApp', []);
-	bookmarkApp.controller('CategoryListCtrl', function ($scope,$http) {
-		$http.get('api/v1/categories.json').success(function(data) {
-			$scope.datas = data;
-			$scope.orderProp = 'id';
-			//gldata = data;
-			//alert($scope.datas);
-		});
-	});
-	
-	bookmarkApp.controller('CategoryDetailCtrl',['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
-		//console.log($routeParams);
-		/**/
-		//$scope.categoryId = $routeParams.categoryId;
-		$http.get('api/v1/categories/'+ $routeParams.categoryId + ".json").success(function(data) {
-			$scope.datas = data;
-			$scope.orderProp = 'id';
-			//gldata = data;
-			//alert($scope.datas);
-			//console.log(data);
-		});
-		/**/
-	}]);
-	
-	bookmarkApp.controller('BookmarkListCtrl', function ($scope,$http) {
-		$http.get('api/v1/bookmarks.json').success(function(data) {
-			$scope.datas = data;
-			$scope.orderProp = 'id';
-			//gldata = data;
-			//alert($scope.datas);
-		});
-	});
-	
-	bookmarkApp.controller('BookmarkDetailCtrl',['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
-		//console.log($routeParams);
-		/**/
-		//$scope.categoryId = $routeParams.categoryId;
-		$http.get('api/v1/bookmarks/'+ $routeParams.bookmarkId + ".json").success(function(data) {
-			$scope.datas = data;
-			$scope.orderProp = 'id';
-			//gldata = data;
-			//alert($scope.datas);
-			//console.log(data);
-		});
-		/**/
-	}]);	
-	
-	bookmarkApp.config(['$routeProvider',
-		function($routeProvider) {
-			$routeProvider.
-				when('/categories', {
-					templateUrl: 'partials/category-list.html',
-					controller: 'CategoryListCtrl'
-				}).
-				when('/categories/:categoryId', {
-					templateUrl: 'partials/category-detail.html',
-					controller: 'CategoryDetailCtrl'
-				}).
-				when('/bookmarks', {
-					templateUrl: 'partials/bookmark-list.html',
-					controller: 'BookmarkListCtrl'
-				}).
-				when('/bookmarks/:bookmarkId', {
-					templateUrl: 'partials/bookmark-detail.html',
-					controller: 'BookmarkDetailCtrl'
-				}).
-				otherwise({
-					redirectTo: '/categories'
-				});
-		}
-	]);
-  </script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/vendor/angular.min.js"></script>
+  <script src="js/vendor/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers/bookmarkcontroller.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -110,5 +34,9 @@
 		<div class="row" ng-view>			
 		</div>
 	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/vendor/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/vendor/bootstrap.min.js"></script>
 </body>
 </html>
