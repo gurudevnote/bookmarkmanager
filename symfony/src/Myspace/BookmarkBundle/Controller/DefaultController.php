@@ -8,7 +8,7 @@ use Myspace\BookmarkBundle\Entity\Bookmark;
 use Myspace\BookmarkBundle\Entity\Category;
 use Myspace\BookmarkBundle\Entity\Tag;
 use Myspace\BookmarkBundle\Entity\Comment;
-use Myspace\BookmarkBundle\Entity\Contact;
+use Myspace\BookmarkBundle\Entity\ImportFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -104,29 +104,32 @@ class DefaultController extends Controller
 	
 	public function importAction(Request $request)
 	{
-		$contact = new Contact();
-		/*
-		$contact->setEmail("huuhuy@gmail.com");
-		$contact->setName("Contact form");
-		$contact->setTask('Write a blog post');
-		$contact->setDueDate(new \DateTime('tomorrow'));
-		$contact->setDescription('simple form description');
-		*/
-		$form = $this->createFormBuilder($contact)
-				//->add('subject','text',array('required'=>false))
-				//->add('email', 'email')
-				//->add('name','text')
-				//->add('description','textarea')
-				//->add('title', 'text')
-				//->add('task', 'text')
+		set_time_limit(0);
+		$importFile = new ImportFile();
+
+		$form = $this->createFormBuilder($importFile)
 				->add('file','file')
-				//->add('dueDate', 'date')
 				->add('save', 'submit', array('label' => 'Import'))
 				->getForm();
 		$form->handleRequest($request);
+		
+		
+		//$logger = $this->get('logger');
+		//$logger->info('I just got the logger');
+		//$logger->error('An error occurred');
+		
+		/*/
+		ob_start();
+		var_dump($request);
+		$result = ob_get_clean();
+		$logger->error($result);
+		$logger->error(json_encode($request));
+		//var_dump($request);die;
+		/**/
+		
 		if ($form->isValid()) {
 			// perform some action, such as saving the task to the database
-			$filePath =  $contact->getFile();
+			$filePath =  $importFile->getFile();
 			
 			//truncat all table:
 			$entityManager = $this->getDoctrine()->getManager();
