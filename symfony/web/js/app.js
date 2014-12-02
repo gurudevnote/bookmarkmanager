@@ -1,7 +1,8 @@
 var bookmarkApp = angular.module('bookmarkApp', [
 	'ngRoute',
 	'bookmarkController',
-	'bookmarkFilters'
+	'bookmarkFilters',
+	'bookmarkServices'
 ]);
 
 bookmarkApp.config(['$routeProvider',
