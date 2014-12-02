@@ -11,7 +11,7 @@
 		</tr>
 		<tr  ng-repeat="dt in datas.bookmarks | filter:query | orderBy:orderProp:orderReverse">
 			<td>{{dt.id}}</td>
-			<td><img ng-src="{{dt.icon}}" /></td>
+			<td><img ng-src="{{dt.icon | icon}}" /></td>
 			<td><a href="#/bookmarks/{{dt.id}}">{{dt.title}}</a></td>			
 		</tr>
 	</table>
