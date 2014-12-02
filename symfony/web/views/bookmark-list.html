@@ -1,5 +1,5 @@
 <div class="panel">
-	<h3 class="panel-heading">Bookmark list</h3>
+	<h3 class="panel-heading">Bookmark list<span ng-show="query.length > 0">, filter by '{{query}}', total items {{(datas | filter:query).length}}</span></h3>
 	<form class="navbar-form navbar-left">
 		<input type="text" class="form-control" placeholder="Search..." ng-model="query">
 	</form>
@@ -13,6 +13,11 @@
 			<td>{{dt.id}}</td>
 			<td><img ng-src="{{dt.icon | icon}}" /></td>
 			<td><a href="#/bookmarks/{{dt.id}}">{{dt.title}}</a></td>			
+		</tr>
+		<tr ng-show="(datas | filter:query).length == 0">
+			<td colspan="3">
+				<span>Items not found</span>
+			</td>
 		</tr>
 	</table>
 </div>

@@ -1,5 +1,5 @@
 <div class="panel">
-	<h3 class="panel-heading">Category: {{datas.name}}</h3>
+	<h3 class="panel-heading">Category: {{datas.name}} <span ng-show="query.length > 0">, filter by '{{query}}', total items {{(datas.bookmarks | filter:query).length}}</span></h3>
 	<form class="navbar-form navbar-left">
 		<input type="text" class="form-control" placeholder="Search..." ng-model="query">
 	</form>
@@ -12,7 +12,12 @@
 		<tr  ng-repeat="dt in datas.bookmarks | filter:query | orderBy:orderProp:orderReverse">
 			<td>{{dt.id}}</td>
 			<td><img ng-src="{{dt.icon | icon}}" /></td>
-			<td><a href="#/bookmarks/{{dt.id}}">{{dt.title}}</a></td>			
+			<td><a class="bookmarklink" href="#/bookmarks/{{dt.id}}">{{dt.title}}</a></td>			
+		</tr>
+		<tr ng-show="(datas.bookmarks | filter:query).length == 0">
+			<td colspan="3">
+				<div class="alert alert-error"><span>Items not found</span></div>
+			</td>
 		</tr>
 	</table>
 </div>
