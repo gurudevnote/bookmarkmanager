@@ -27,6 +27,10 @@ some user story:
 - i can filter bookmark by tags
 - i can register to receive email after new bookmark is added.
 
+run application:
+- start server: php app/console server:run
+- import data: go to address http://127.0.0.1:8000/app.php/import and import data from html file in folder testdata/bookrks_11_17_14.html
+- see applicaton: go to address http://127.0.0.1:8000/app.html
 
 Symfony Standard Edition
 ========================
