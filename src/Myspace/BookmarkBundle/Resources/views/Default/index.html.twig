@@ -7,7 +7,7 @@
 			<span>Categories</span>
 			<ul>
 			{% for item in attribute(array, 0) %}
-				<li><a href="{{path('myspace_bookmark_category',{'catid':item.id})}}">{{ item.name }}({{ item.bookmarks | length }})</a></li>
+				<li><a href="{{path('category_detail',{'catid':item.id})}}">{{ item.name }}({{ item.bookmarks | length }})</a></li>
 			{% endfor %}
 			</ul>
 		</td>
@@ -15,7 +15,7 @@
 			<span>Tags</span>
 			<ul>
 			{% for item in attribute(array, 1) %}
-				<li><a href="{{path('myspace_bookmark_tag',{'tagid':item.id})}}">{{ item.name }}({{ item.bookmarktags | length }})</a></li>
+				<li><a href="{{path('tag_detail',{'tagid':item.id})}}">{{ item.name }}({{ item.bookmarktags | length }})</a></li>
 			{% endfor %}
 			</ul>
 		</td>

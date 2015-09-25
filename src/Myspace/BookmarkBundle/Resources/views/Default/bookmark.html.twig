@@ -1,4 +1,4 @@
-<p><a href="{{path('myspace_bookmark_category',{'catid':bookmark.category.id})}}">Back to category ({{bookmark.category.name}})</a></p>
+<p><a href="{{path('category_detail',{'catid':bookmark.category.id})}}">Back to category ({{bookmark.category.name}})</a></p>
 <ul>
 	<li><a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a></li>
 </ul>
@@ -6,7 +6,7 @@
 <p>
 <ul>
 {% for item in bookmark.bookmarktags %}
-	<li><a href="{{path('myspace_bookmark_tag',{'tagid':item.tag.id})}}">{{ item.tag.name }}</a>({{ item.tag.bookmarktags | length }})</li>
+	<li><a href="{{path('tag_detail',{'tagid':item.tag.id})}}">{{ item.tag.name }}</a>({{ item.tag.bookmarktags | length }})</li>
 {% endfor %}
 </ul>
 </p>
