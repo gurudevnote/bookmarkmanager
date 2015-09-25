@@ -11,6 +11,13 @@ bookmarkmanager project
 - import data: go to address http://127.0.0.1:8000/app.php/import and import data from html file in folder *testdata/bookrks_11_17_14.html*
 - see application (angular js app): go to address http://127.0.0.1:8000/app.html
 - see application on symfony app: go to address http://127.0.0.1:8000
+- api: 
+-- http://127.0.0.1:8000/api/v1/categories.json
+-- http://127.0.0.1:8000/api/v1/categories
+-- http://127.0.0.1:8000/api/v1/categories.xml
+-- http://127.0.0.1:8000/api/v1/bookmarks
+-- http://127.0.0.1:8000/api/v1/bookmarks.xml
+-- http://127.0.0.1:8000/api/v1/bookmarks.json
 
 2) some of required technology:
 -------------------
