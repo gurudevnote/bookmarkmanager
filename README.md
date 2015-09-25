@@ -1,4 +1,15 @@
+run application:
+===============
+- install vendor: composer install
+- update latest vendor: composer update
+- update database schema: php app/console doctrine:schema:update --force
+- start server: php app/console server:run
+- import data: go to address http://127.0.0.1:8000/app.php/import and import data from html file in folder *testdata/bookrks_11_17_14.html*
+- see application (angular js app): go to address http://127.0.0.1:8000/app.html
+- see application on symfony app: go to address http://127.0.0.1:8000
+
 bookmarkmanager project, some of required technology:
+================
 - responsive design
 - behavior driven development
 - scrum process
@@ -9,6 +20,7 @@ bookmarkmanager project, some of required technology:
 - UI: bootstrap theme compatible angularsJS
 
 some user story:
+===============
 - create project skeleton
 - i can sign-up by google account, facebook account.
 - i can import bookmark of chrome, frifefox, ie
@@ -26,11 +38,6 @@ some user story:
 - i can filter bookmark by category
 - i can filter bookmark by tags
 - i can register to receive email after new bookmark is added.
-
-run application:
-- start server: php app/console server:run
-- import data: go to address http://127.0.0.1:8000/app.php/import and import data from html file in folder testdata/bookrks_11_17_14.html
-- see applicaton: go to address http://127.0.0.1:8000/app.html
 
 Symfony Standard Edition
 ========================
