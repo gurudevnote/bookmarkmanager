@@ -1,5 +1,9 @@
-run application:
-===============
+
+bookmarkmanager project
+=======================
+
+1) run application:
+----------------
 - install vendor: composer install
 - update latest vendor: composer update
 - update database schema: php app/console doctrine:schema:update --force
@@ -8,8 +12,8 @@ run application:
 - see application (angular js app): go to address http://127.0.0.1:8000/app.html
 - see application on symfony app: go to address http://127.0.0.1:8000
 
-bookmarkmanager project, some of required technology:
-================
+2) some of required technology:
+-------------------
 - responsive design
 - behavior driven development
 - scrum process
@@ -19,8 +23,8 @@ bookmarkmanager project, some of required technology:
 - Development of REST API in symfony
 - UI: bootstrap theme compatible angularsJS
 
-some user story:
-===============
+3) some user story:
+----------------
 - create project skeleton
 - i can sign-up by google account, facebook account.
 - i can import bookmark of chrome, frifefox, ie
