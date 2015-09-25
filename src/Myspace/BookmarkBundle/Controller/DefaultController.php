@@ -160,7 +160,7 @@ class DefaultController extends Controller
                 }
             }
 
-            return $this->redirect($this->generateUrl('myspace_bookmark_homepage'));
+            return $this->redirect($this->generateUrl('index'));
         } else {
             return $this->render("MyspaceBookmarkBundle:Default:import.html.twig", array("form" => $form->createView(),));
         }

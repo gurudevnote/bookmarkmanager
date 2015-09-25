@@ -91,8 +91,6 @@ fos_rest:
             rss: 'application/rss+xml'
             jpg: 'image/jpeg'
             png: 'image/png'
-    body_listener: true
-    param_fetcher_listener: force
     allowed_methods_listener: true
     access_denied_listener:
         json: true
@@ -110,5 +108,4 @@ sensio_framework_extra:
     security:    { annotations: true }
     psr_message: { enabled: false } # Defaults to true if the PSR-7 bridge is installed
 
-nelmio_api_doc:
-    name: Page API	
+nelmio_api_doc: ~

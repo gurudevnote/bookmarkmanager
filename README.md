@@ -18,6 +18,7 @@ bookmarkmanager project
 -- http://127.0.0.1:8000/api/v1/bookmarks
 -- http://127.0.0.1:8000/api/v1/bookmarks.xml
 -- http://127.0.0.1:8000/api/v1/bookmarks.json
+- api doc: http://localhost:8000/api/doc
 
 2) some of required technology:
 -------------------
