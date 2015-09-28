@@ -1,20 +1,7 @@
 myspace_bookmark_angurlajs:
     path:     /gl
-    defaults: { _controller:MyspaceBookmarkBundle:Default:angularjs}	
-myspace_bookmark_homepage:
-    path:     /
-    defaults: { _controller: MyspaceBookmarkBundle:Default:index, _format:json}
-myspace_bookmark_import:
-    path:     /import
-    defaults: { _controller: MyspaceBookmarkBundle:Default:import}
-myspace_bookmark_category:
-    path:     /category/{catid}
-    defaults: { _controller: MyspaceBookmarkBundle:Default:category}
-    requirements:
-        _method: GET
-myspace_bookmark_bookmark:
-    path:     /bookmark/{bookmarkid}
-    defaults: { _controller: MyspaceBookmarkBundle:Default:bookmark}
-myspace_bookmark_tag:
-    path:     /tag/{tagid}
-    defaults: { _controller: MyspaceBookmarkBundle:Default:tag}
+    defaults: { _controller:MyspaceBookmarkBundle:Default:angularjs}
+v3d_assets:
+    resource: "@MyspaceBookmarkBundle/Controller/"
+    type:     annotation
+    prefix:   /

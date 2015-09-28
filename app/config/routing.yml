@@ -1,11 +1,11 @@
 myspace_bookmark:
-#    type: rest
     resource: "@MyspaceBookmarkBundle/Resources/config/routing.yml"
     prefix: /
-#    prefix:   /api
 
 myspace_bookmark_restfull:
     type: rest
     resource: "@MyspaceBookmarkBundle/Resources/config/routing_restfull.yml"
     prefix: /
-#    prefix:   /api
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc

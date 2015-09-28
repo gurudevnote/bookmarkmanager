@@ -83,7 +83,7 @@ fos_rest:
         formats:
             json: true
             xml: true
-            rss: false			
+            rss: false
         templating_formats:
             html: true
         mime_types:
@@ -91,8 +91,6 @@ fos_rest:
             rss: 'application/rss+xml'
             jpg: 'image/jpeg'
             png: 'image/png'
-    body_listener: true
-    param_fetcher_listener: force
     allowed_methods_listener: true
     access_denied_listener:
         json: true
@@ -100,11 +98,14 @@ fos_rest:
         rules:
           - { path: '^/', priorities: ['html','json', 'xml'], fallback_format: html, prefer_extension: true }
     routing_loader:
-        default_format: ~			
+        default_format: ~
     # add a content negotiation rule, enabling support for json/xml for the entire website
 sensio_framework_extra:
-    view:    { annotations: false }
+    router:      { annotations: true }
+    request:     { converters: true, auto_convert: true }
+    view:        { annotations: false } #You need to disable the view annotations in SensioFrameworkExtraBundle when using the FOSRestBundle View Response listener. Add "view: { annotations: false }" to the sensio_framework_extra: section of your config.yml
+    cache:       { annotations: true }
+    security:    { annotations: true }
+    psr_message: { enabled: false } # Defaults to true if the PSR-7 bridge is installed
 
-
-nelmio_api_doc:
-    name: Page API	
+nelmio_api_doc: ~
