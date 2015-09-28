@@ -1,13 +1,25 @@
 <?php
 namespace Myspace\BookmarkBundle\Controller;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 class UsersController
 {
     public function optionsUsersAction()
-    {} // "options_users" [OPTIONS] /users
+    {
+        $view = $this->view(array(), 200);
+        return $view;
+    } // "options_users" [OPTIONS] /users
 
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="get all list of User"
+     * )
+     */
     public function getUsersAction()
-    {} // "get_users"     [GET] /users
+    {
+        return array('user 1', 'user 2', 'user 3');
+    } // "get_users"     [GET] /users
 
     public function newUsersAction()
     {} // "new_users"     [GET] /users/new

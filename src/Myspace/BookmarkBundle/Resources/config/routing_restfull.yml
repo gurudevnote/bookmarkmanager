@@ -1,9 +1,9 @@
-#myspace_bookmark_user_restfull_api:
-#    type: rest
-#    prefix: /api/v1
-#    resource: Myspace\BookmarkBundle\Controller\UsersController
-#    name_prefix: api_1_
-#    name_prefix: rest_api_v1
+myspace_bookmark_user_restfull_api:
+    type: rest
+    prefix: /api/v1
+    resource: Myspace\BookmarkBundle\Controller\UsersController
+    name_prefix: api_1_
+    name_prefix: api_v1
 myspace_bookmark_category_restfull_api:
     type: rest
     prefix: /api/v1

@@ -1,26 +1,29 @@
 <p style="font-weight:bold;font-size:37px;">
-	<a href="app.html">click here</a> to go angularJS application 
+    <a href="app.html">click here</a> to go angularJS application <br/>
+    <a href="api/doc" >See api document</a>
 </p>
-<table border ="0" style="vertical-align:top">
-	<tr>
-		<td>
-			<span>Categories</span>
-			<ul>
-			{% for item in attribute(array, 0) %}
-				<li><a href="{{path('category_detail',{'catid':item.id})}}">{{ item.name }}({{ item.bookmarks | length }})</a></li>
-			{% endfor %}
-			</ul>
-		</td>
-		<td style="vertical-align:top;">
-			<span>Tags</span>
-			<ul>
-			{% for item in attribute(array, 1) %}
-				<li><a href="{{path('tag_detail',{'tagid':item.id})}}">{{ item.name }}({{ item.bookmarktags | length }})</a></li>
-			{% endfor %}
-			</ul>
-		</td>
-	</tr>
+<table border="0" style="vertical-align:top">
+    <tr>
+        <td>
+            <span>Categories</span>
+            <ul>
+                {% for item in attribute(array, 0) %}
+                    <li><a href="{{ path('category_detail',{'catid':item.id}) }}">{{ item.name }}
+                            ({{ item.bookmarks | length }})</a></li>
+                {% endfor %}
+            </ul>
+        </td>
+        <td style="vertical-align:top;">
+            <span>Tags</span>
+            <ul>
+                {% for item in attribute(array, 1) %}
+                    <li><a href="{{ path('tag_detail',{'tagid':item.id}) }}">{{ item.name }}
+                            ({{ item.bookmarktags | length }})</a></li>
+                {% endfor %}
+            </ul>
+        </td>
+    </tr>
 </table>
 <p style="font-weight:bold;font-size:37px;">
-	<a href="app.html">click here</a> to go angularJS application 
+    <a href="app.html">click here</a> to go angularJS application
 </p>
