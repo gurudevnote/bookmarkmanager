@@ -85,6 +85,7 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
             // perform some action, such as saving the task to the database
             $filePath = $importFile->getFile();
 
@@ -118,9 +119,11 @@ class DefaultController extends Controller
             $text = "/>([^<]+)</";
             $addDate = "/ADD_DATE=\"(\\d+)\"/";
             $lastModify = "/LAST_MODIFIED=\"(\\d+)\"/";
-            $herf = "/HREF=\"([^\"]+)\"/";;
+            $herf = "/HREF=\"([^\"]+)\"/";
             $icon = "/ICON=\"([^\"]+)\"/";
+            $flushItemCount = 0;
             foreach ($newarr as $line) {
+                $flushItemCount++;
                 if (strpos($line, "<H3 ADD_DATE") !== false) {
                     //folder
 
@@ -130,10 +133,8 @@ class DefaultController extends Controller
                     echo $texts[1] . "<br/>";
 
                     $category = new Category();
-                    $category->setName($texts[1]);
-                    $em = $this->getDoctrine()->getManager();
-                    $em->persist($category);
-                    $em->flush();
+                    $category->setName($texts[1]);                    
+                    $em->persist($category);                    
 
                     $currentCategory = $category;
                 } else if (strpos($line, "<DT><A HREF=") !== false) {
@@ -153,12 +154,17 @@ class DefaultController extends Controller
                     if (count($icons) > 0) {
                         $bookmark->setIcon($icons[1]);
                     }
-                    $bookmark->setCategory($currentCategory);
-                    $em = $this->getDoctrine()->getManager();
-                    $em->persist($bookmark);
-                    $em->flush();
+                    $bookmark->setCategory($currentCategory);                    
+                    $em->persist($bookmark);                    
                 }
+                
+                if($flushItemCount % 100 == 0)
+                {
+                    $em->flush();
+                }                               
             }
+            
+            $em->flush();
 
             return $this->redirect($this->generateUrl('index'));
         } else {
