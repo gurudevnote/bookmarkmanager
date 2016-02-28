@@ -30,6 +30,12 @@ bookmarkApp.config(['$routeProvider', '$httpProvider',
 				redirectTo: '/categories'
 			});
 	}
+])
+.config(['cfpLoadingBarProvider',
+	function(cfpLoadingBarProvider) {
+		//cfpLoadingBarProvider.includeSpinner = false;
+		cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
+	}
 ]);
 
 bookmarkApp.run(['$rootScope', '$location', function($rootScope, $location){
