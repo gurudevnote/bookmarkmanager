@@ -1,17 +1,15 @@
 var bookmarkController = angular.module('bookmarkController', []);
-bookmarkController.controller('CategoryListCtrl', function ($scope,$http) {
-	$http.get('api/v1/categories.json').success(function(data) {
-		$scope.datas = data;
-		$scope.orderProp = 'id';
-	});
-});
+bookmarkController.controller('CategoryListCtrl', ['$scope', 'Category', function ($scope, Category) {
+	$scope.categories = Category.query();
+	$scope.orderProp = 'id';
+}]);
 
-bookmarkController.controller('CategoryDetailCtrl',['$scope', '$routeParams', '$http', 'Category', function ($scope, $routeParams, $http, Category) {	
+bookmarkController.controller('CategoryDetailCtrl',['$scope', '$routeParams', 'Category', function ($scope, $routeParams, Category) {
 	$scope.category = Category.get({categoryId: $routeParams.categoryId });
 	$scope.orderProp = 'id';
 }]);
 
-bookmarkController.controller('BookmarkListCtrl', function ($scope,$http) {
+bookmarkController.controller('BookmarkListCtrl', function ($scope, $http) {
 	$http.get('api/v1/bookmarks.json').success(function(data) {
 		$scope.datas = data;
 		$scope.orderProp = 'id';
