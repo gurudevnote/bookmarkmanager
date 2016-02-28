@@ -32,12 +32,12 @@ bookmarkApp.config(['$routeProvider', '$httpProvider',
 ]);
 
 bookmarkApp.run(['$rootScope', '$location', function($rootScope, $location){
-   var path = function() 
-   { 
-   		return $location.path();
-   };
+	var path = function() 
+	{ 
+		return $location.path();
+	};
 
-   $rootScope.$watch(path, function(newVal, oldVal){
-   		$rootScope.activetab = newVal;
-   });
+	$rootScope.$watch(path, function(newVal, oldVal){
+		$rootScope.activetab = newVal;
+	});
 }]);
