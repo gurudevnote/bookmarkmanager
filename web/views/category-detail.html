@@ -1,5 +1,5 @@
 <div class="panel">
-	<h3 class="panel-heading">Category: {{datas.name}} <span ng-show="query.length > 0">, filter by '{{query}}', total items {{(datas.bookmarks | filter:query).length}}</span></h3>
+	<h3 class="panel-heading">Category: {{category.name}} <span ng-show="query.length > 0">, filter by '{{query}}', total items {{(category.bookmarks | filter:query).length}}</span></h3>
 	<form class="navbar-form navbar-left">
 		<input type="text" class="form-control" placeholder="Search..." ng-model="query">
 	</form>
@@ -9,12 +9,12 @@
 			<th ng-click="orderProp='icon';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='icon', 'glyphicon-sort-by-attributes':orderProp=='icon' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='icon'&&orderReverse}"></span>Icon</th>
 			<th ng-click="orderProp='title';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='title', 'glyphicon-sort-by-attributes':orderProp=='title' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='title'&&orderReverse}"></span>Title</th>			
 		</tr>
-		<tr  ng-repeat="dt in datas.bookmarks | filter:query | orderBy:orderProp:orderReverse">
+		<tr  ng-repeat="dt in category.bookmarks | filter:query | orderBy:orderProp:orderReverse">
 			<td>{{dt.id}}</td>
 			<td><img ng-src="{{dt.icon | icon}}" /></td>
 			<td><a class="bookmarklink" href="#/bookmarks/{{dt.id}}">{{dt.title}}</a></td>			
 		</tr>
-		<tr ng-show="(datas.bookmarks | filter:query).length == 0">
+		<tr ng-show="(category.bookmarks | filter:query).length == 0">
 			<td colspan="3">
 				<div class="alert alert-error"><span>Items not found</span></div>
 			</td>
