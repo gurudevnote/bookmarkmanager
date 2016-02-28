@@ -5,8 +5,9 @@ var bookmarkApp = angular.module('bookmarkApp', [
 	'bookmarkServices'
 ]);
 
-bookmarkApp.config(['$routeProvider',
-	function($routeProvider) {
+bookmarkApp.config(['$routeProvider', '$httpProvider',
+	function($routeProvider, $httpProvider) {
+		$httpProvider.defaults.cache = true;
 		$routeProvider.
 			when('/categories', {
 				templateUrl: 'views/category-list.html',
