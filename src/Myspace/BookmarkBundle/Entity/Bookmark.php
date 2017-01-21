@@ -27,7 +27,7 @@ class Bookmark
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=300)
+     * @ORM\Column(name="url", type="text")
 	 * @Groups({"list"})
      */
     private $url;
@@ -35,7 +35,7 @@ class Bookmark
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=300,nullable=true)
+     * @ORM\Column(name="title", type="text", nullable=true)
 	 * @Groups({"list"})
      */
     private $title;
@@ -43,7 +43,7 @@ class Bookmark
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=300,nullable=true)
+     * @ORM\Column(name="slug", type="text",nullable=true)
 	 * @Groups({"list"})
      */
     private $slug;
@@ -51,7 +51,7 @@ class Bookmark
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=500,nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=true)
 	 * @Groups({"list"})
      */
     private $description;
@@ -59,7 +59,7 @@ class Bookmark
 	/**
      * @var string
      * @Groups({"list"})
-     * @ORM\Column(name="icon", type="string", length=10000,nullable=true)
+     * @ORM\Column(name="icon", type="text", nullable=true)
      */
     private $icon;
 
