@@ -20,10 +20,11 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "symfony/dom-crawler": "~2.5",
         "friendsofsymfony/rest-bundle": "~1.4",
-        "jms/serializer-bundle": "~0.13",
+        "jms/serializer-bundle": "dev-master",
         "nelmio/api-doc-bundle": "~2.7",
         "liip/functional-test-bundle": "~1.0",
-		"stof/doctrine-extensions-bundle": "~1.1@dev"
+		"stof/doctrine-extensions-bundle": "~1.1@dev",
+        "twig/twig": "~1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
