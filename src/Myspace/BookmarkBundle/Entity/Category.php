@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation\Groups;
  * Category
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Myspace\BookmarkBundle\Repository\CategoryRepository")
  */
 class Category
 {
