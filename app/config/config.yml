@@ -109,3 +109,12 @@ sensio_framework_extra:
     psr_message: { enabled: false } # Defaults to true if the PSR-7 bridge is installed
 
 nelmio_api_doc: ~
+
+nelmio_cors:
+    paths:
+        '^/':
+            allow_origin: '*'
+            allow_credentials: true
+            allow_headers: ['*']
+            allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
+            max_age: 3600
