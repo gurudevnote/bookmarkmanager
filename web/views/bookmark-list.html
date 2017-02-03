@@ -12,7 +12,7 @@
 		<tr  ng-repeat="dt in datas | filter:query | orderBy:orderProp:orderReverse">
 			<td>{{dt.id}}</td>
 			<td><img ng-src="{{dt.icon | icon}}" /></td>
-			<td><a href="#/bookmarks/{{dt.id}}">{{dt.title}}</a></td>			
+			<td><a href="#/bookmarks/{{dt.id}}">{{dt.title}}</a>(<a href="#/categories/{{dt.category.id}}">{{dt.category.name}}</a>)</td>
 		</tr>
 		<tr ng-show="(datas | filter:query).length == 0">
 			<td colspan="3">
