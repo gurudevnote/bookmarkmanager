@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation\Groups;
  * Bookmark
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Myspace\BookmarkBundle\Repository\BookmarkRepository")
  */
 class Bookmark
 {
@@ -94,6 +94,7 @@ class Bookmark
 	/**
 	* @ORM\ManyToOne(targetEntity="Category", inversedBy="bookmarks")
 	* @ORM\JoinColumn(name="catid", referencedColumnName="id")
+    * @Groups({"list"})
 	*/
 	protected $category;
 
