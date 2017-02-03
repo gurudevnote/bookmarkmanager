@@ -1,6 +1,8 @@
 <?php
 namespace Myspace\BookmarkBundle\Controller;
 
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+use FOS\RestBundle\Request\ParamFetcher;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Myspace\BookmarkBundle\Entity\Bookmark;
 use Myspace\BookmarkBundle\Entity\Category;
@@ -12,7 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 //use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use JMS\Serializer\SerializationContext;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
@@ -24,15 +25,15 @@ class BookmarkController extends FOSRestController
      *  resource=true,
      *  description="get all bookmarks"
      * )
+     * @QueryParam(name="keyword", default="", nullable=true, strict=false, description="input keyword for searching bookmark base on category and bookmark's information")
      */
-    public function getBookmarksAction()
+    public function getBookmarksAction(ParamFetcher $fetcher)
     {
-
+        $keyword = $fetcher->get('keyword');
         $context = SerializationContext::create()->setGroups(array('list'));
         $cats = $this->getDoctrine()
             ->getRepository('MyspaceBookmarkBundle:Bookmark')
-            ->findAll();
-        //->findById(22);
+            ->searchBookmarkByCategoryNameOrBookmarkInformation($keyword);
         $view = $this->view($cats, 200)//->setFormat("json")
         ;
         $view->setSerializationContext($context);
