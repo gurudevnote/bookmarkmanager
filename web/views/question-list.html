@@ -5,16 +5,16 @@
 			<td>
 				<div>
 					<h4>{{question.category}} ({{question.questions.length}})</h4>
-					<ul>
+					<ol>
 						<li ng-repeat="catQuestion in question.questions">
 							<span><b> {{catQuestion.question}} </b></span>
 							<ul>
 								<li ng-repeat="answer in catQuestion.answers">
-									{{ answer.value }} - {{answer.correct}}
+									<span ng-class="{'text-bold success': answer.correct}">{{ answer.value }}</span>
 								</li>
 							</ul>
 						</li>
-					</ul>
+					</ol>
 				</div>
 			</td>
 		</tr>
