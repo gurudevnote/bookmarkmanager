@@ -24,7 +24,7 @@ class QuestionController extends Controller
     public function getQuestionsAction() {
         $vendor = $this->get('kernel')->getRootDir() . '/../vendor/';
         $finder = new Finder();
-        $finder->name('*.yml');
+        $finder->name('*.yml')->sortByName();
         $questions = [];
         foreach ($finder->in($vendor . 'certificationy/symfony-pack/data/') as $file) {
             $questions[] = Yaml::parse(file_get_contents($file));
