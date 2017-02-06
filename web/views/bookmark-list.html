@@ -11,7 +11,7 @@
 		</tr>
 		<tr  ng-repeat="dt in datas | filter:query | orderBy:orderProp:orderReverse">
 			<td>{{dt.id}}</td>
-			<td><img ng-src="{{dt.icon | icon}}" /></td>
+			<td><a href="{{dt.url}}" target="_blank"><img ng-src="{{dt.icon | icon}}" /></a></td>
 			<td><a href="#/bookmarks/{{dt.id}}">{{dt.title}}</a>(<a href="#/categories/{{dt.category.id}}">{{dt.category.name}}</a>)</td>
 		</tr>
 		<tr ng-show="(datas | filter:query).length == 0">
