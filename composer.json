@@ -25,7 +25,9 @@
         "liip/functional-test-bundle": "~1.0",
 		"stof/doctrine-extensions-bundle": "~1.1@dev",
         "twig/twig": "~1.0",
-        "nelmio/cors-bundle": "^1.5"
+        "nelmio/cors-bundle": "^1.5",
+        "certificationy/symfony-pack": "dev-master",
+        "certificationy/php-pack": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

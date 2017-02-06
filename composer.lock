@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "050fc73a96ad22bf19d496338fb03f76",
-    "content-hash": "e838664264bafc2c8c3c0f5e723b3b3d",
+    "hash": "13636b0661a088e1e730d2eb9583089a",
+    "content-hash": "fbdb73219fa3c7c98c0c967a0d8a098b",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -46,6 +46,83 @@
                 "transliterator"
             ],
             "time": "2015-09-28 16:26:35"
+        },
+        {
+            "name": "certificationy/php-pack",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/certificationy/php-pack.git",
+                "reference": "2828b01942f92673ac714cd158c35ac204185c0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/certificationy/php-pack/zipball/2828b01942f92673ac714cd158c35ac204185c0e",
+                "reference": "2828b01942f92673ac714cd158c35ac204185c0e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "certificationy/yaml-linter": "v1.0.1"
+            },
+            "type": "certificationy-pack",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mickaël Andrieu",
+                    "email": "andrieu.travail@gmail.com"
+                }
+            ],
+            "description": "A series of questions to prepare for the Zend PHP5.5 certification",
+            "homepage": "http://github.com/mickaelandrieu/php-pack",
+            "keywords": [
+                "certification",
+                "exam",
+                "php5.5",
+                "test",
+                "zend"
+            ],
+            "time": "2016-11-30 12:53:53"
+        },
+        {
+            "name": "certificationy/symfony-pack",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/certificationy/symfony-pack.git",
+                "reference": "8b05f26be26c196b804699fd46622f9d5f2d08ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/certificationy/symfony-pack/zipball/8b05f26be26c196b804699fd46622f9d5f2d08ec",
+                "reference": "8b05f26be26c196b804699fd46622f9d5f2d08ec",
+                "shasum": ""
+            },
+            "require-dev": {
+                "certificationy/yaml-linter": "v1.0.1"
+            },
+            "type": "certificationy-pack",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mickaël Andrieu",
+                    "email": "andrieu.travail@gmail.com"
+                }
+            ],
+            "description": "A series of questions to prepare for the certification Symfony2",
+            "homepage": "http://github.com/certificationy/symfony-pack",
+            "keywords": [
+                "certification",
+                "exam",
+                "symfony",
+                "test"
+            ],
+            "time": "2017-02-04 18:35:27"
         },
         {
             "name": "doctrine/annotations",
@@ -3353,7 +3430,9 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "jms/serializer-bundle": 20,
-        "stof/doctrine-extensions-bundle": 20
+        "stof/doctrine-extensions-bundle": 20,
+        "certificationy/symfony-pack": 20,
+        "certificationy/php-pack": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
