@@ -9,8 +9,9 @@ bookmarkController.controller('CategoryDetailCtrl',['$scope', '$routeParams', 'C
 	$scope.orderProp = 'id';
 }]);
 
-bookmarkController.controller('BookmarkListCtrl', function ($scope, $http) {
-	$http.get('api/v1/bookmarks.json').success(function(data) {
+bookmarkController.controller('BookmarkListCtrl', function ($scope, $http, $routeParams) {
+	var keyword = $routeParams.keyword || '';
+	$http.get('api/v1/bookmarks.json?keyword=' + keyword ).success(function(data) {
 		$scope.datas = data;
 		$scope.orderProp = 'id';
 	});
