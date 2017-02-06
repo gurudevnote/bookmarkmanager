@@ -13,4 +13,10 @@ myspace_bookmark_bookmark_restfull_api:
     type: rest
     prefix: /api/v1
     resource: Myspace\BookmarkBundle\Controller\BookmarkController
-    name_prefix: api_1_	
+    name_prefix: api_1_
+
+questions_restfull_api:
+    resource: Myspace\BookmarkBundle\Controller\QuestionController
+    type:     rest
+    prefix:   /api/v1
+    name_prefix: api_1_

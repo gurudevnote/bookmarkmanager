@@ -23,3 +23,9 @@ bookmarkController.controller('BookmarkDetailCtrl',['$scope', '$routeParams', '$
 		$scope.orderProp = 'id';
 	});
 }]);
+
+bookmarkController.controller('QuestionListCtrl', function ($scope, $http, $routeParams) {
+	$http.get('api/v1/questions.json').success(function(data) {
+		$scope.questions = data;
+	});
+});

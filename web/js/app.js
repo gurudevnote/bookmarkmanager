@@ -30,6 +30,10 @@ bookmarkApp.config(['$routeProvider', '$httpProvider',
 				templateUrl: 'views/bookmark-detail.html',
 				controller: 'BookmarkDetailCtrl'
 			}).
+			when('/questions', {
+				templateUrl: 'views/question-list.html',
+				controller: 'QuestionListCtrl'
+			}).
 			otherwise({
 				redirectTo: '/categories'
 			});

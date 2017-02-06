@@ -6,7 +6,3 @@ bookmarks:
     type:     annotation
     prefix:   /
 
-questions:
-    resource: '@MyspaceBookmarkBundle/Controller/QuestionController.php'
-    type:     annotation
-    prefix:   /

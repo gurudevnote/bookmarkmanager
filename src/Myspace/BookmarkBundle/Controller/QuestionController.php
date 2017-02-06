@@ -9,28 +9,26 @@
 namespace Myspace\BookmarkBundle\Controller;
 
 
-use FOS\RestBundle\Controller\Annotations\Route;
+use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Finder\Finder;
 
-class QuestionController extends Controller
+class QuestionController extends FOSRestController
 {
     /**
      * @ApiDoc(description="get list questions of symfony and php")
-     * @Route("/questions")
      */
     public function getQuestionsAction() {
         $vendor = $this->get('kernel')->getRootDir() . '/../vendor/';
         $finder = new Finder();
         $finder->name('*.yml')->sortByName();
+        $arrayDir = [
+            $vendor . 'certificationy/symfony-pack/data/',
+            $vendor . 'certificationy/php-pack/data/'
+        ];
         $questions = [];
-        foreach ($finder->in($vendor . 'certificationy/symfony-pack/data/') as $file) {
-            $questions[] = Yaml::parse(file_get_contents($file));
-        }
-
-        foreach ($finder->in($vendor . 'certificationy/php-pack/data/') as $file) {
+        foreach ($finder->in($arrayDir) as $file) {
             $questions[] = Yaml::parse(file_get_contents($file));
         }
         return $questions;
