@@ -1,7 +1,12 @@
 myspace_bookmark_angurlajs:
     path:     /gl
     defaults: { _controller:MyspaceBookmarkBundle:Default:angularjs}
-v3d_assets:
+bookmarks:
     resource: "@MyspaceBookmarkBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+questions:
+    resource: '@MyspaceBookmarkBundle/Controller/QuestionController.php'
     type:     annotation
     prefix:   /
