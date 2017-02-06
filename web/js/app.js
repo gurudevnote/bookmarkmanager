@@ -22,6 +22,10 @@ bookmarkApp.config(['$routeProvider', '$httpProvider',
 				templateUrl: 'views/bookmark-list.html',
 				controller: 'BookmarkListCtrl'
 			}).
+			when('/search/:keyword?', {
+				templateUrl: 'views/bookmark-list.html',
+				controller: 'BookmarkListCtrl'
+			}).
 			when('/bookmarks/:bookmarkId', {
 				templateUrl: 'views/bookmark-detail.html',
 				controller: 'BookmarkDetailCtrl'
