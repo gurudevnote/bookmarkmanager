@@ -33,7 +33,8 @@ class BookmarkController extends FOSRestController
         $context = SerializationContext::create()->setGroups(array('list'));
         $cats = $this->getDoctrine()
             ->getRepository('MyspaceBookmarkBundle:Bookmark')
-            ->searchBookmarkByCategoryNameOrBookmarkInformation($keyword);
+            ->searchBookmarkByCategoryNameOrBookmarkInformationWithMultipleKeywords($this->get('myspace_bookmark.string_service')
+                ->getListKeywords($keyword, 2));
         $view = $this->view($cats, 200)//->setFormat("json")
         ;
         $view->setSerializationContext($context);
