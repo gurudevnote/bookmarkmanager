@@ -1,5 +1,7 @@
 <?php
 namespace Myspace\BookmarkBundle\Controller;
+use Doctrine\DBAL\Connection;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Myspace\BookmarkBundle\Entity\Bookmark;
 use Myspace\BookmarkBundle\Entity\Category;
@@ -90,7 +92,9 @@ class DefaultController extends Controller
             $filePath = $importFile->getFile();
 
             //truncat all table:
+            /** @var EntityManager $entityManager */
             $entityManager = $this->getDoctrine()->getManager();
+            /** @var Connection $connection */
             $connection = $entityManager->getConnection();
             $schemaManager = $connection->getSchemaManager();
             $tables = $schemaManager->listTables();
@@ -133,8 +137,10 @@ class DefaultController extends Controller
                     echo $texts[1] . "<br/>";
 
                     $category = new Category();
-                    $category->setName($texts[1]);                    
-                    $em->persist($category);                    
+                    $category->setName($texts[1]);
+                    $category->setCreated($this->getDateTimeFromTimestamp($addDates[1]));
+                    $category->setLastModified($this->getDateTimeFromTimestamp($lastModifies[1]));
+                    $em->persist($category);
 
                     $currentCategory = $category;
                 } else if (strpos($line, "<DT><A HREF=") !== false) {
@@ -154,6 +160,11 @@ class DefaultController extends Controller
                     if (count($icons) > 0) {
                         $bookmark->setIcon($icons[1]);
                     }
+
+                    if(count($addDates) > 0) {
+                        $date = $this->getDateTimeFromTimestamp($addDates[1]);
+                        $bookmark->setCreated($date);
+                    }
                     $bookmark->setCategory($currentCategory);                    
                     $em->persist($bookmark);                    
                 }
@@ -171,5 +182,15 @@ class DefaultController extends Controller
             return $this->render("MyspaceBookmarkBundle:Default:import.html.twig", array("form" => $form->createView(),));
         }
 
+    }
+
+    /**
+     * @param $ts
+     * @return \DateTime
+     */
+    private function getDateTimeFromTimestamp($ts)
+    {
+        $date = new \DateTime("@$ts");
+        return $date;
     }
 }

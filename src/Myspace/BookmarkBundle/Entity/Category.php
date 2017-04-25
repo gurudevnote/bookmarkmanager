@@ -43,10 +43,18 @@ class Category
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime", nullable=true)
+     * @ORM\Column(name="created", type="datetimetz", nullable=true)
 	 * @Groups({"list", "details"})
      */
     private $created;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_modified", type="datetimetz", nullable=true)
+     * @Groups({"list", "details"})
+     */
+    private $lastModified;
 	
 	/**
      * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
@@ -193,4 +201,20 @@ class Category
 		$this->totalbm = $total;
 		return $this;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getLastModified()
+    {
+        return $this->lastModified;
+    }
+
+    /**
+     * @param mixed $lastModified
+     */
+    public function setLastModified($lastModified)
+    {
+        $this->lastModified = $lastModified;
+    }
 }
