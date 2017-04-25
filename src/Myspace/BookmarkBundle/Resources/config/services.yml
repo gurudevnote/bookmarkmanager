@@ -5,3 +5,6 @@ services:
     myspace_bookmark.string_service:
         class: Myspace\BookmarkBundle\Services\StringService
         autowire: true
+
+    jms_serializer.camel_case_naming_strategy:
+        class: 'JMS\Serializer\Naming\IdenticalPropertyNamingStrategy'

@@ -7,15 +7,17 @@
 		<tr>
 			<th ng-click="orderProp='id';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='id', 'glyphicon-sort-by-attributes':orderProp=='id' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='id'&&orderReverse}" ></span>ID</th>
 			<th ng-click="orderProp='icon';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='icon', 'glyphicon-sort-by-attributes':orderProp=='icon' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='icon'&&orderReverse}"></span>Icon</th>
-			<th ng-click="orderProp='title';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='title', 'glyphicon-sort-by-attributes':orderProp=='title' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='title'&&orderReverse}"></span>Title</th>			
+			<th ng-click="orderProp='title';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='title', 'glyphicon-sort-by-attributes':orderProp=='title' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='title'&&orderReverse}"></span>Title</th>
+			<th style="width: 150px;" ng-click="orderProp='created';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='created', 'glyphicon-sort-by-attributes':orderProp=='created' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='created'&&orderReverse}" >&nbsp;</span>Created</th>
 		</tr>
 		<tr  ng-repeat="dt in datas | filter:query | orderBy:orderProp:orderReverse">
 			<td>{{dt.id}}</td>
 			<td><a href="{{dt.url}}" target="_blank"><img ng-src="{{dt.icon | icon}}" /></a></td>
 			<td><a href="#/bookmarks/{{dt.id}}">{{dt.title}}</a>(<a href="#/categories/{{dt.category.id}}">{{dt.category.name}}</a>)</td>
+			<td>{{dt.created | date :  "y-MM-dd"}}</td>
 		</tr>
 		<tr ng-show="(datas | filter:query).length == 0">
-			<td colspan="3">
+			<td colspan="4">
 				<span>Items not found</span>
 			</td>
 		</tr>
