@@ -27,7 +27,8 @@
         "twig/twig": "~1.0",
         "nelmio/cors-bundle": "^1.5",
         "certificationy/symfony-pack": "dev-master",
-        "certificationy/php-pack": "dev-master"
+        "certificationy/php-pack": "dev-master",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

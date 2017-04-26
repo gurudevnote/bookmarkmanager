@@ -20,3 +20,9 @@ questions_restfull_api:
     type:     rest
     prefix:   /api/v1
     name_prefix: api_1_
+
+angular_restfull_api:
+    resource: Myspace\BookmarkBundle\Controller\AngularController
+    type:     rest
+    prefix:   /api/v1
+    name_prefix: api_1_
