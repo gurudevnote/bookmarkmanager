@@ -1,0 +1,10 @@
+<div class="panel">
+	<h3 class="panel-heading">Angular2 versions list</h3>
+	<table class="table table-striped table-bordered table-hover">
+		<tr  ng-repeat="(version, value) in angulars.versions" >
+			<td>
+				<a target="_blank" ng-if="value.url" href="{{value.url}}">{{version}} </a> <span ng-if="!value.url">{{version}}</span> ({{value.date}})
+			</td>
+		</tr>
+	</table>
+</div>

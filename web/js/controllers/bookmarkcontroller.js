@@ -29,3 +29,9 @@ bookmarkController.controller('QuestionListCtrl', function ($scope, $http, $rout
 		$scope.questions = data;
 	});
 });
+
+bookmarkController.controller('AngularsCtrl', function ($scope, $http, $routeParams) {
+    $http.get('api/v1/angulars.json').success(function(data) {
+        $scope.angulars = data;
+    });
+});
