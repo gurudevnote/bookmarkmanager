@@ -33,5 +33,13 @@ bookmarkController.controller('QuestionListCtrl', function ($scope, $http, $rout
 bookmarkController.controller('AngularsCtrl', function ($scope, $http, $routeParams) {
     $http.get('api/v1/angulars.json').success(function(data) {
         $scope.angulars = data;
+        $scope.features = [];
+        angular.forEach(data.versions, function(value, key) {
+           if(value.features && value.features.Features) {
+               angular.forEach(value.features.Features, function(item) {
+                   $scope.features.push(item.text);
+               });
+		   }
+        });
     });
 });
