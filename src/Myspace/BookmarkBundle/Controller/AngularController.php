@@ -55,7 +55,9 @@ class AngularController extends FOSRestController
             }
 
             if (strpos($line, '* ') === 0) {
-                $versions[$currentVersion]['features'][$currentFeature][] = [$line, $this->getTags($line)];
+                $links = $this->getMarkdownLinks($line);
+                $versions[$currentVersion]['features'][$currentFeature][] = [ $this->getTags($line), $links];
+
             }
         }
         return ['versions' => $versions];
@@ -102,5 +104,24 @@ class AngularController extends FOSRestController
         if($matchCount > 0) {
             return $datas[1];
         }
+    }
+
+    private function removeTags($text) {
+        $tagReg = '/\*\*([^*:]*):\*\*/';
+        return preg_replace($tagReg, '', $text);
+    }
+
+    private function getMarkdownLinks ($text) {
+        $reg = '/\[([^]]*)\] *\(([^)]*)\)/i';
+        $matchCount = preg_match_all($reg, $text, $datas);
+        $newText = preg_replace($reg, '', $text);
+        $result = ['text' => $newText, 'urls' => []];
+        if($matchCount > 0) {
+            foreach ($datas[1] as $index => $id) {
+                $result['urls'] = [$id => $datas[2][$index]];
+            }
+        }
+
+        return $result;
     }
 }
