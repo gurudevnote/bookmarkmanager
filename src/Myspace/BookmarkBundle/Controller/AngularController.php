@@ -56,7 +56,10 @@ class AngularController extends FOSRestController
 
             if (strpos($line, '* ') === 0) {
                 $links = $this->getMarkdownLinks($line);
-                $versions[$currentVersion]['features'][$currentFeature][] = [ $this->getTags($line), $links];
+                $links['text'] = $this->removeTags($links['text']);
+                $links['tags'] = $this->getTags($line);
+                $links['isBug'] = 'Bug Fixes' === $currentFeature;
+                $versions[$currentVersion]['features'][$currentFeature][] = $links;
 
             }
         }
@@ -118,7 +121,7 @@ class AngularController extends FOSRestController
         $result = ['text' => $newText, 'urls' => []];
         if($matchCount > 0) {
             foreach ($datas[1] as $index => $id) {
-                $result['urls'] = [$id => $datas[2][$index]];
+                $result['urls'][] = [$id => $datas[2][$index]];
             }
         }
 
