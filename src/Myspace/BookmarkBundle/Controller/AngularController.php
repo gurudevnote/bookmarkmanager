@@ -39,7 +39,7 @@ class AngularController extends FOSRestController
                 }
             }
 
-            if (strpos($line, "# ") === 0) {
+            if (strpos($line, "# ") === 0 || strpos($line, "## ") === 0) {
                 $currentFeature = '';
                 $matchCount = preg_match_all($dataReg, $line, $datas);
                 if($matchCount > 0) {
