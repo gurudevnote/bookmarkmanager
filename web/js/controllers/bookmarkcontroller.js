@@ -34,11 +34,24 @@ bookmarkController.controller('AngularsCtrl', function ($scope, $http, $routePar
     $http.get('api/v1/angulars.json').success(function(data) {
         $scope.angulars = data;
         $scope.features = [];
-        angular.forEach(data.versions, function(value, key) {
-           if(value.features && value.features.Features) {
-               angular.forEach(value.features.Features, function(item) {
-                   $scope.features.push(item.text);
-               });
+        $scope.orderProp = 'version';
+        $scope.orderReverse = '-';
+        angular.forEach(data.versions, function(value, version) {
+           if(value.features) {
+			   angular.forEach(value.features, function (featureValue, feature) {
+                   angular.forEach(featureValue, function(item) {
+                       $scope.features.push({
+                           text: item.text,
+                           version: version,
+                           date: value.date,
+                           versionUrl: value.url,
+                           feature: feature,
+                           tags: item.tags,
+                           urls: item.urls,
+                           isBug: item.isBug
+                       });
+                   });
+               })
 		   }
         });
     });

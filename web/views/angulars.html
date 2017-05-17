@@ -1,14 +1,25 @@
 <div class="panel">
-	<h3 class="panel-heading">Angular2 versions list</h3>
+	<h2>Number issues {{features.length}}</h2>
 	<table class="table table-striped table-bordered table-hover">
-		<tr  ng-repeat="(version, value) in angulars.versions" >
-			<td>
-				<a target="_blank" ng-if="value.url" href="{{value.url}}">{{version}} </a> <span ng-if="!value.url">{{version}}</span> ({{value.date}})
+		<tr>
+			<th nowrap ng-click="orderProp='version';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='version', 'glyphicon-sort-by-attributes':orderProp=='version' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='version'&&orderReverse}" class="">&nbsp;</span>Version</th>
+			<th ng-click="orderProp='date';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='date', 'glyphicon-sort-by-attributes':orderProp=='date' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='date'&&orderReverse}" >&nbsp;</span>Date</th>
+			<th nowrap ng-click="orderProp='text';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='text', 'glyphicon-sort-by-attributes':orderProp=='text' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='text'&&orderReverse}" >&nbsp;</span>text</th>
+			<th ng-click="orderProp='feature';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='feature', 'glyphicon-sort-by-attributes':orderProp=='feature' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='feature'&&orderReverse}" >&nbsp;</span>Feature</th>
+			<th ng-click="orderProp='isBug';orderReverse=!orderReverse"><span ng-class="{'glyphicon':orderProp=='isBug', 'glyphicon-sort-by-attributes':orderProp=='isBug' && !orderReverse, 'glyphicon-sort-by-attributes-alt':orderProp=='isBug'&&orderReverse}" >&nbsp;</span>Is Bug</th>
+		</tr>
+		<tr  ng-repeat="value in features  | filter:query | orderBy:orderProp:orderReverse" >
+			<td nowrap>
+				<a style="cursor: pointer" target="_blank" ng-if="value.versionUrl" href="{{value.versionUrl}}">{{value.version}} </a> <span ng-if="!value.versionUrl">{{value.version}}</span>
 			</td>
+			<td nowrap>{{value.date}}</td>
+			<td>
+				{{value.text}}
+				<a style="margin-right: 5px;cursor: pointer;" href="{{url.url}}" target="_blank" ng-repeat="url in value.urls" >{{url.text}}</a>
+				<span ng-if="value.tags.length > 0">(<span style="margin-right: 5px;" ng-repeat="tag in value.tags">{{tag}}</span>)</span>
+			</td>
+			<td>{{value.feature}}</td>
+			<td>{{value.isBug}}</td>
 		</tr>
 	</table>
-	<h2>features number is {{features.length}}</h2>
-	<ul ng-repeat="text in features track by $index">
-		<li>{{text}}</li>
-	</ul>
 </div>

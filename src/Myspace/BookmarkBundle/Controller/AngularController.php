@@ -111,7 +111,8 @@ class AngularController extends FOSRestController
 
     private function removeTags($text) {
         $tagReg = '/\*\*([^*:]*):\*\*/';
-        return preg_replace($tagReg, '', $text);
+        $result = preg_replace($tagReg, '', $text);
+        return str_replace('()', '', $result);
     }
 
     private function getMarkdownLinks ($text) {
@@ -121,7 +122,7 @@ class AngularController extends FOSRestController
         $result = ['text' => $newText, 'urls' => []];
         if($matchCount > 0) {
             foreach ($datas[1] as $index => $id) {
-                $result['urls'][] = [$id => $datas[2][$index]];
+                $result['urls'][] = ['text' => $id, 'url' => $datas[2][$index]];
             }
         }
 
